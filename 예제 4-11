@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+//this
+//포인터 객체 자신의 포인터
+//클래스 내의 멤버 함수 내에서만 사용가능
+//클래스 안의 있는 징ㄱ변수
+//같은 이름 쓰면 사용하기 편함
+
+int main()
+{
+	string str;
+	string address("서울시 성북구 삼선동 389"); //초깃값 설정
+	string copyAddress(address); //address에 있는 초깃값이 copy변수 초깃값에 들어감
+
+	char text[] = { 'L','o','v','e',' ','C','+','+','\0' };
+	string title(text); //title의 초깃값이 text값이 들어가게 됨
+
+	cout << str << endl; //str은 값을 지정을 안해서 값이 안나옴
+	cout << address << endl;
+	cout << copyAddress << endl;
+	cout << title << endl;
+
+}
+
