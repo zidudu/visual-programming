@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+int main(){
+
+	//getline() 멤버 함수를 이용하면 공백 포함된 문자열을 입력받을 수 있음
+	//cin.getline(char buf[],int size,char delimitChar)
+	//buf:키보드로부터 읽은 문자열을 저장할 배열
+	//size:buf[] 배열의 크기
+	//delimitChar: 문자열 입력 끝을 지정하는 구분문자
+	//최대 size-1개의 문자 입력하거나 delimitChar로 지정된 문자 만나면 문자열의 입력이 종료됨
+	//입력된 문자열은 buf[]배열에 저장되며 delimitCahr로 지정된 문자는 저장되지 않고 cin의 버퍼에도 사라짐
+	//그리고 buf[]배열에 널 문자 \0가 덧붙여짐
+	cout << "주소 입력:";
+
+	char address[100];
+	cin.getline(address, 100, '\n');  // 엔터키가 입력될때까지 최대 99개 문자 입력 가능, 입력한 값은 address에 들어감
+	cout << "주소는 " << address << "입니다\n";
+
+	char prac[5];
+	cin.getline(prac, 2, 'a'); //2라고 설정하면 1글자만 나옴 그 이유는 \0가 덧붙어져서 그럼
+	cout << "주소출력" << prac;
+
+
+
+
+
+}
