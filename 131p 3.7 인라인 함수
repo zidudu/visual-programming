@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+//int odd(int x) { //엄청난 오버헤드 시간이 소모됨
+//	return (x % 2);
+//}
+inline int odd(int x) { //이런 작은 함수들 인라인으로 선언하면 프로그램 실행속도 향상됨, 상당히 빠름
+	return (x % 2);//단점: 호출하는 곳 여러군데라면 그만큼 전체 크기 증가함
+	//클래스의 선언부에 직접 넣어서 해도 괜찮음 
+	//짧은 생성자에도 해도 좋고, 멤버함수 구현할때 붙여도 좋고
+}
+int main(){
+	int sum = 0;
+
+	for (int i = 1; i <= 10000; i++) {
+		if (odd(i)) {//odd 함수에서 계산한 값이 0이면 false,1이면 true가 나옴
+			sum += i;
+		}
+	}
+	cout << sum;
+
+
+
+	 
+}
