@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+int main(){
+	string s;
+	cout << "7+23+5+100+25와 같이 덧셈 문자열 입력해라." << endl;
+	getline(cin, s, '\n'); //문자열 입력한 값을 s에 저장
+	int sum = 0;
+	int starIndex = 0;
+	while (true)
+	{
+		int fIndex = s.find('+', starIndex); //s에서 +를 0부터 끝까지 있는지 검사
+		if (fIndex == -1) {//+가 없을때 즉 완전 끝 숫자일때
+			string part = s.substr(starIndex); //stratindex부터 끝까지의 문자열을 part변수에 넣음
+			if (part == "") break; //진짜진짜 끝에서 검사할때, 즉 \0일때
+			cout << part << endl;
+			sum += stoi(part); //part의 문자열을 수로 바꿔 sum에 더함
+			break;
+		}
+		int count = fIndex - starIndex;//substr로 자를 문자의 개수
+		string part = s.substr(starIndex, count); //66이면 0부터 2까지의 값을 part에 저장
+
+		cout << part << endl;
+		sum += stoi(part); //문자열을 정수로 변환해 sum에 넣음
+		starIndex = fIndex + 1; //검색할 인데스를 1만큼 움직여서 +앞에 있는 다음 값을 검사함
+	}
+	cout << "숫자들 합: " << sum;
+}
+/*
+7+23+5+100+25와 같이 덧셈 문자열 입력해라.
+1+2+3+4+5
+1
+2
+3
+4
+5
+숫자들 합: 15
+
+*/
