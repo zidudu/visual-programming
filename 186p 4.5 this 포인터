@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+class Sample {
+	int a;
+public:
+	void setA(int x) { //	void setA(Sample* this, int x) {  //this는 컴파일러에 의해 묵시적으로 삽입된 매개변수
+
+		this->a = x; //그래서 this 쓰면 a의 주소를 찾아갈 수 있음 //this는 sample에 있는 주소를 찾아갈 수 있게 된다.
+	}
+};
+
+
+int main(){
+	//this 객체 자신에 대한 포인터
+	//클래스의 멤버함수 내에서만 사용
+	//매개변수의 이름과 멤버변수의 이름이 같은 경우 this를 써서 구분한다.
+	//객체의 멤버 함수에서 객체 자신의 주소를 리턴할 때가 있기 때문에 this는 필수임
+	
+	//근데 this는 정적 멤버 함수(static member 함수)는 this를 사용할 수 없다.
+
+
+}
