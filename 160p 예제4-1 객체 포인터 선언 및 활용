@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+//객체 다루기 위해 객체에 대한 포인터 변수 선언
+//이 포인터 변수로 객체의 멤버함수를 읽고 값 쓰거나 멤버함수 호출 가능
+
+	//1.객체에 대한 포인터 변수 선언 Circle *p;
+	//2.포인터 변수에 객체 주소를 지정한다  p=&donut;
+	//3.포인터를 이용한 객체의 멤버함수나 멤버 변수를 접근할땐 .연산자 이용함
+	//근데 객체 포인터로 멤버 접근할때는 ->연산자 사용함  d=p->getArea();  d=(*p).getArea();
+	//대신 객체 포인터를 초기화 하지않고 멤버 함수 호출하면 오류 발생
+
+class Circle
+{
+	int radius;
+public:
+	Circle() { radius = 1; }
+	Circle(int r) { radius = r; };
+	double getArea();
+
+
+};
+double Circle::getArea() {
+	return 3.14 * radius * radius;
+}
+
+int main(){
+	Circle donut;
+	Circle pizza(30);
+
+	cout << donut.getArea() << endl;
+
+	Circle* p; //객체 포인터 생성
+	p = &donut; //p가 객체 donut의 주소를 가리킴
+	cout << p->getArea() << endl; //donut의 멤버 함수인 getArea()를 호출
+	cout << (*p).getArea() << endl;
+
+	p = &pizza;//p가 객체 pizza의 주소 가리킴
+	cout << p->getArea() << endl; //pizza의 멤버 함수인 getArea()를 호출
+	cout << (*p).getArea() << endl;
+
+	 
+}
