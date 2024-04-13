@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+	int* p;
+
+
+	p = new int; //int 타입 1개 할당함 //p = new int(20);이렇게 메모리 할당받을때 초깃값 지정가능
+	if (!p) { //p가 
+		cout << "메모리 할당 불가능"; //p가 NULL이면 메모리 할당이 실패함 //힙 메모리가 부족하면 new는 NULL을 리턴함
+		return 0;
+	}
+	*p = 5; //할당 정수 공간에 5 기록
+	int n = *p; //n의 값이 p의 참조값에 들어감
+	cout << "*p = " << *p << endl;
+	cout << "*n = " << n << endl;
+	//*p = 5
+	//*n = 5
+	delete p; //할당 받은 메모리를 반환한다
+	//중복 안됨. delete 후 포인터 p는 살아있지만 p 가리키는 곳에 접근할수없음
+
+}
