@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+//struct structname //구조체는 클래스와 동일한 구조와 기능 가짐
+//{
+//private:
+//public:
+//};
+//클래스와 구조체의 차이점:
+//클래스의 디폴트 접근 지정은 private고,구조체의 디폴트 접근 지정은 public이다
+
+struct StructCircle
+{
+private:
+	int radius; //멤버변수
+public:
+	StructCircle(int r) { radius = r; } //생성자
+	double getArea(); //멤버함수
+};
+double StructCircle::getArea() {
+	return 3.14 * radius * radius;
+}
+int main(){
+	StructCircle Waffle(3); //StructCircle Waffle만 쓰면 매개변수가 없는 생성자가 없으니 오류가 뜬다
+	cout<<Waffle.getArea(); //28.26
+	
+
+
+
+	 
+}
