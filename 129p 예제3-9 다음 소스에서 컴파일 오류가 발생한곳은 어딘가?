@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+class PrivateAccessError {
+	//클래스 내에서만 사용 가능
+private:
+	int a;
+	void f();
+	PrivateAccessError();
+	//외부에서도 사용 가능
+public:
+	int b;
+	PrivateAccessError(int x);
+	void g();
+};
+PrivateAccessError::PrivateAccessError() {
+	a = 1;
+	b = 1;
+}
+PrivateAccessError::PrivateAccessError(int x) {
+	a = x;
+	b = x;
+}
+
+void PrivateAccessError::f() {
+	a = 5;
+	b = 5;
+}
+void PrivateAccessError::g() { //클래스 내에 있는 함수에서는 private에 있는 값을 지정가능해서 a에 6을 넣을 수 있음
+	a = 6;
+	b = 6;
+}
+
+
+int main(){
+	PrivateAccessError objA; // 멤버변수가 없는 생성자는 private에 있기 때문에 외부에서는 접근할 수 없어 오류가 남 X
+	PrivateAccessError objB(100); //멤버변수 있는 생성자는 public에 있기 때문에 외부에서도 접근가능 O
+	objB.a = 10; //a라는 멤버변수는 private에 있기 때문에 외부에서 값 지정 불가능 X 
+	objB.b = 20; // b라는 멤버변수는 public에 있기 때문에 외부에서 값 지정할 수 있음 O
+	objB.f(); //f라는 멤버함수는 private에 있어서 외부에서 호출할 수 없음 X
+	objB.g(); //g라는 멤버함수는 public에 있기 때문에 외부에서 호출 가능함 O
+
+
+
+
+
+
+
+
+//동적 메모리 할당:실행 중에 필요한 만큼 메모리를 할당받고 필요없을 때 반환하는 동적 메모리 할당/반환 메커니즘	
+	//c++은 new와 delete연산자 이용함,new연산자는 힙이라는 공간으로부터 메모리 할당
+	//delete 연산자는 할당받은 메모리를 힙으로 반환함
+
+	 
+}
