@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+
+{
+	string s; //입력넣을 문자열 변수
+	cout << "여러 줄의 문자열 입력.입력 끝은 &문자임." << endl;
+	getline(cin, s, '&'); //끝에 &쓰고 엔터
+	cin.ignore(); //엔터 키 제거하는 코드 //엔터 없이도 밑으로 내려감
+
+	string f, r; //찾는 코드, 바꿀 코드
+	cout << endl<<"find :"; 
+	getline(cin, f, '\n'); //f에 찾을 문자열 입력
+	cout <<"replace :";
+	getline(cin, r, '\n'); //r에 바꿀 문자열 입력
+
+	int startIndex = 0;
+	while (true)
+	{
+		int fIndex = s.find(f, startIndex); //startindex=0 부터 찾을 문자열을 찾아서 그 위치값을 findex에 넣음
+		if (fIndex == -1) { //찾아야할 문자열이 없는 경우 종료 //find를 했을때 못찾았으면 find함수는 -1을 반환함
+			break;
+
+		}
+		s.replace(fIndex, f.length(), r); //findex에서 찾은 문자열의 위치에 f의 길이만큼을  r에 넣은 문자열로 바꿈 //r의 문자열이 f보다 길면 
+		startIndex = fIndex + r.length(); // 찾은 문자열 위치를 빼고 거기에 r의 문자열 길이를 더해 다음 인덱스를 찾음
+		//hi를 넣었다면 findex는 첫번째 주소값에서 바꿈
+	}
+	//바꾼 문자열을 출력함
+	cout << s<<endl;
+
+
+}	
+/*
+여러 줄의 문자열 입력.입력 끝은 &문자임.
+hi everyone
+&
+
+find :hi
+replace :good
+good everyone
+
+*/
