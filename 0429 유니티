@@ -1,0 +1,35 @@
+run->jump 의 HAS EXIT TIME 을 꺼줌
+
+
+    public Animator Anim; //주소 참조
+
+
+maincamera 스크립트 만들고 
+    public Camera cam;
+    public GameObject player;
+
+    // Update is called once per frame
+    void Update()
+    {
+        cam.orthographicSize = 5f + player.transform.position.y;   
+    }
+}
+cam에는 main camera, player에는 player 넣기
+
+
+public class CameraZoom : MonoBehaviour
+{
+    public Camera cam;
+    public GameObject player;
+
+    public float speed = 0.5f;
+    float camSize = 5f; 
+
+    // Update is called once per frame
+    void Update()
+    {
+        //cam.orthographicSize = 5f + player.transform.position.y;   
+        camSize = 5f + player.transform.position.y; //캠 사이즈에 담아놓기
+        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, camSize, Time.deltaTime/speed);  //딜레이 값 //
+    }
+}
