@@ -1,0 +1,42 @@
+
+#include <iostream>
+using namespace std;
+
+class Circle {
+	int radius;
+public:
+	Circle() { radius = 1; }
+	Circle(int radius) { this->radius = radius; }
+	void setRadius(int radius) { this->radius = radius; }
+	int getRadius() { return radius; }
+	double getArea() { return 3.14 * radius * radius; }
+	~Circle() { cout << "소멸자 실행" << endl; }
+};
+Circle getCircle() {
+	Circle tmp(30); //객체 c의 멤버함수 안에서 tmp객체를 또 생성하고 30의 매개변수를 줌
+	return tmp; //객체 tmp를 리턴하여 객체 c에게 전달하고 tmp는 소멸된다. 이때 tmp객체의 소멸자가 실행된다.
+}
+
+int main()
+{
+	Circle c; //객체 생성, c의 반지름은 기본생성자를 호출했으니 1이 된다.
+	cout << "객체 c의 반지름 :" << c.getRadius() << endl;
+	cout << "객체 c 반지름의 원 면적 :" << c.getArea() << endl; 
+
+	c = getCircle(); //tmp를 반환한 것을 객체 c에 복사하여 반지름은 30이 된다.
+	cout << "tmp 반지름 복사한 객체 c의 반지름 :" << c.getRadius() << endl;
+	cout << "tmp 반지름 복사한 객체 c 반지름 원 면적:" << c.getArea() << endl;
+
+	/*
+	객체 c의 반지름 :1
+	객체 c 반지름의 원 면적 :3.14
+	소멸자 실행
+	tmp 반지름 복사한 객체 c의 반지름 :30
+	tmp 반지름 복사한 객체 c 반지름 원 면적:2826
+	소멸자 실행
+	
+	*/
+
+
+}
+
