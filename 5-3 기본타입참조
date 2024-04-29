@@ -1,0 +1,30 @@
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	cout << "i" << '\t' << "n" << '\t' << "refn" << endl;
+	int i = 1;
+	int n = 2;
+	int& refn = n; // 참조변수 refn 선언, refn은 n에 대한 별명 //refn주소에 n값을 넣음
+	n = 4; //4로 바꿈
+	refn++; //refn은 5가 되고 n도 5가 됨
+	cout << i << '\t' << n << '\t' << refn << endl;
+
+	refn = i; //1
+	refn++; //2
+ 	cout << i << '\t' << n << '\t' << refn << endl; //n도 2가 됨
+
+	int* p = &refn; //
+	*p = 20;
+	cout << i << '\t' << n << '\t' << refn << endl;
+
+	/*
+	i       n       refn
+	1       5       5
+	1       2       2
+	1       20      20
+	*/
+}
+
