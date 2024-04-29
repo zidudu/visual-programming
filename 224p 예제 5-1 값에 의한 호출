@@ -30,19 +30,20 @@ Circle::Circle(int radius) { //매개변수 있는 생성자 구현
 Circle::~Circle() { //소멸자
 	cout << "소멸자 실행  radius = " << radius << endl;
 }
-void increase(Circle c) { //객체를 매개변수로 받는 함수 //객체 c는 생성자가 실행되지않음
+void increase(Circle c) { //객체를 매개변수로 받는 함수 //객체 c는 생성자가 실행되지않음 
+	//왜 생성자가 실행되지 않을까? 만약 객체 c가 생성자를 실행하면 기본 생성자를 실행해서 반지름이 1이되어 전달받은 30 값의 원본 상태를 잃어버리기 때문이다.
 	int r = c.getRadius(); //접근자 함수 값이 r변수 반지름 값에 들어감
 	cout << "increase 값 :" << r << endl;
 	c.setRadius(r + 1); //설정자함수에 매개변수+1을 하여 circle 클래스에 넣음
 	//즉 반지름은 31이 되고 그 값이 radius 멤버 변수에 들어감
-	cout << "객체 c의 원 면적: "<< c.getArea() << endl;
+	cout << "객체 c의 원 면적: " << c.getArea() << endl;
 } //increase 함수가 끝나고 객체 c는 사라지게 됨, 사라질 때 소멸자가 실행되어 r+1한 31의 값이 출력됨
 int main()
 {
 	Circle waffle(30); //매개변수 있는 객체 생성
 	increase(waffle); // 객체를 매개변수로 받는 함수를 호출 객체의 주소를 받음
 	cout << waffle.getRadius() << endl; // waffle의 반지름 값 출력
-	cout << "객체 waffle의 원 면적 : " << waffle.getArea()<<endl;
+	cout << "객체 waffle의 원 면적 : " << waffle.getArea() << endl;
 
 
 	/*
