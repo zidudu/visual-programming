@@ -1,0 +1,16 @@
+
+#include <iostream>
+using namespace std;
+
+void swap(int a,int b){ //m=2,n=9 값을   a와 b에 보냄
+	int tmp; //교환 변수
+
+	tmp = a;
+	a = b;
+	b = tmp;
+}
+int main() {
+	int m = 2, n = 9;
+	swap(m, n); // 값을 매개변수로 보냄
+	cout << m << ' ' << n; //2 9
+}
