@@ -1,0 +1,19 @@
+
+#include <iostream>
+using namespace std;
+//주소에 의한 호출
+//실인자:프로그래밍에서 함수를 호출할 때 함수에 전달되는 값 
+// //즉 함수를 정의할때 지정된 매개변수에 실제로 전달되는 값이 실인자임
+void swap(int *a, int *b) { //포인터 매개변수 a,b가 swap()의 스택에 생성됨,
+
+	int tmp; //교환 변수
+
+	tmp = *a;
+	*a = *b; //a가 가리키는 m의 값이 바뀜
+	*b = tmp; //b가 가리키는 n의 값이 바뀜
+} //swap 함수 종료하면 a,b 사라지고 main()스택의 m,n은 서로 교환된 채 남아있게 됨
+int main() {
+	int m = 2, n = 9;
+	swap(m, n); // 값을 매개변수로 보냄
+	cout << m << ' ' << n; //2 9
+}
