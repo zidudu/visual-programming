@@ -1,0 +1,20 @@
+#include <iostream>
+
+using namespace std;
+char& find(char s[], int index) {
+	return s[index]; // 참조 리턴
+}
+
+int main()
+{
+	char name[] = "Mike";
+	cout << name << endl;
+
+	find(name, 0) = 'S'; //name[0]='S'로 변경함
+	cout << name << endl;
+
+	char& ref = find(name, 2); //ref는 name[2]에 대한 참조
+	ref = 't'; //name ="Site"  //ref는 name[2]을 참조하고 있고, name[2]에 't' 을 넣어 k를 t로 바꿈
+	cout << name << endl;
+}
+
